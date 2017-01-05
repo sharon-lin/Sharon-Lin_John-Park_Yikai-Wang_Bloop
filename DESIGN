@@ -1,0 +1,19 @@
+Team Members: Sharon Lin, John Park, Yikai Wang
+
+Abstract: Our team is developing a GUI in which users will be able to operate and play a virtual piano.
+
+Description of Use: Users will press keys on the keyboard that correspond to keys on the virtual piano, allowing them to play melodies. There will be a series of white and black keys corresponding to each of the keys on a standard piano. In addition, users will be able to save their melodies as files and upload melodies to be played.
+
+Description of Design: We plan on using memory allocation, files (uploading), processes (forking, exec, etc.), signals, pipes (named), shared memory, semaphores, and networking. Yikai will work as the project manager; Sharon will focus on the processes, piping, and backend; and John will work on developing the GUI. We plan on using a linked list to store melodies, as well as a queue to handle the sound from the keyboard and the concurrent users. We plan on using an arraylist to handle saving the melodies, as well as a concurrent server algorithm to handle multiple users at once.
+
+Timeline: 
+1/6/2017 - Submit the design doc
+1/7/2017 - Begin work on project - create the initial GUI and basic handling of keys
+1/8/2017 - Create melodies-to-keys transmission
+1/9/2017 - Begin working on networking
+1/10/2017 - Begin working on saving melodies to a file/reading melody files
+1/15/2017 - Finish work on networking
+1/16/2017 - Finish work on melodies
+1/17/2017 - Integrate file saving into existing project
+1/18/2017 - Begin testing project
+1/19/2017 - Submit final project
