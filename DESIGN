@@ -1,6 +1,6 @@
 Team Members: Sharon Lin, John Park, Yikai Wang
 
-Abstract: Our team is developing a GUI in which users will be able to operate and play a virtual piano.
+Abstract: Our team is developing a GUI in which users will be able to operate and play a virtual piano. This can be useful for teaching beginners on how to operate a piano.
 
 Description of Use: Users will press keys on the keyboard that correspond to keys on the virtual piano, allowing them to play melodies. There will be a series of white and black keys corresponding to each of the keys on a standard piano. In addition, users will be able to save their melodies as files and upload melodies to be played.
 
