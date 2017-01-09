@@ -2,3 +2,7 @@
                     Devlog
 -------------------------------------------------------------------------------
 Format: firstL -- TIMESTAMP
+
+yikaiW -- 2017-1-09 @12:38
+  Tried looking at libraries that enable sound in c but found that <dos.h> isn't
+  standard. Looking at alternatives.
