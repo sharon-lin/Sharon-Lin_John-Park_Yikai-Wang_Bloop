@@ -10,3 +10,7 @@ yikaiW -- 2017-1-09 @10:58
 yikaiW -- 2017-1-10 @12:58
   Modified DESIGN (we are now coding drums instead of piano)
   
+yikaiW -- 2017-1-16 @18:35
+  Finished ASCII drawing of drum playing
+  Finished making the C code that prints out ascii drum drawing
+
