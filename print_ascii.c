@@ -1,5 +1,5 @@
-#define ASCII_SIZE1 1020
-#define ASCII_SIZE2 949
+#define ASCII_SIZE1 1420
+//#define ASCII_SIZE2 1949
 
 #include <sys/sem.h>
 #include <stdio.h>
@@ -22,11 +22,11 @@ void main(){
   printf( "%s\n", buff );
 
   //gets # of bytes the current position is from the beginning of the file
-  lseek(fd, -(ASCII_SIZE2), SEEK_END );//from end
+  //lseek(fd, -(ASCII_SIZE2), SEEK_END );//from end
 
-  read( fd, buff, sizeof(buff) );
-  buff[ASCII_SIZE2] = 0;
-  printf( "%s\n", buff );
+  //read( fd, buff, sizeof(buff) );
+  //buff[ASCII_SIZE2] = 0;
+  //printf( "%s\n", buff );
 
   close(fd);
 }
