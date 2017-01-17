@@ -14,3 +14,7 @@ yikaiW -- 2017-1-16 @18:35
   Finished ASCII drawing of drum playing
   Finished making the C code that prints out ascii drum drawing
 
+sharonL -- 2017-01-17 @10:50
+  Worked on creating server (not pushed)
+  Worked on implementing design for "animation"
+
