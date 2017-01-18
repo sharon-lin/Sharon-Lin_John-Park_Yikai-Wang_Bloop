@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+void play_sound(int query){
+  int *query_s = "";
+  switch(query){
+  case 1:
+    query_s = "drum1.mp3";
+  case 2:
+    
+  }
+  if (query == 1) query_s = "drum1.mp3";
+  else if (query == 2) query_s = "drum2.mp3";
+  if (query == 1) query_s = "drum3.mp3";
+  if (query == 1) query_s = "drum1.mp3";
+  if (query == 1) query_s = "drum1.mp3";
+  system("mpg123 "+query_s);
+}
