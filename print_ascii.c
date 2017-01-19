@@ -1,10 +1,5 @@
-#define ASCII_SIZE0 183
-#define ASCII_SIZE1 186
-#define ASCII_SIZE2 119
-#define ASCII_SIZE3 32
-#define ASCII_SIZE4 33
-#define ASCII_SIZE5 25
-#define ASCII_SIZE6 25
+#define ASCII_SIZE 7
+#define MAX_ASCII_SIZE 200
 
 #include <sys/sem.h>
 #include <stdio.h>
@@ -18,50 +13,30 @@
 #include <errno.h>
 #include <unistd.h>
 
+int ascii_sizes[ASCII_SIZE] = {
+  183, 186, 119,
+  32,
+  33,
+  25,
+  25
+};
+
+void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd ) {
+  int i = 0;
+  for(; i < ASCII_SIZE; i++ ) {
+    read( fd, buff[i], ascii_sizes[i] );
+    buff[i][ascii_sizes[i]] = 0;
+    printf( "buff[%d]:\n%s\n", i, buff[i] );
+    lseek(fd, 1, SEEK_CUR );
+  }
+}
+
 void main(//int argc, char const *argv[]
 ) {
   int fd = open("ascii.txt", O_RDONLY);
 
-  char buff[7][200];
-  read( fd, buff[0], ASCII_SIZE0 );
-  buff[0][ASCII_SIZE0] = 0;
-  printf( "buff[0]:\n%s\n", buff[0] );
-
-  lseek(fd, 1, SEEK_CUR );
-
-  read( fd, buff[1], ASCII_SIZE1 );
-  buff[1][ASCII_SIZE1] = 0;
-  printf( "buff[1]:\n%s\n", buff[1] );
-
-  lseek(fd, 1, SEEK_CUR );
-
-  read( fd, buff[2], ASCII_SIZE2 );
-  buff[2][ASCII_SIZE2] = 0;
-  printf( "buff[2]:\n%s\n", buff[2] );
-
-  lseek(fd, 1, SEEK_CUR );
-
-  read( fd, buff[3], ASCII_SIZE3 );
-  buff[3][ASCII_SIZE3] = 0;
-  printf( "buff[3]:\n%s\n", buff[3] );
-
-  lseek(fd, 1, SEEK_CUR );
-
-  read( fd, buff[4], ASCII_SIZE4 );
-  buff[4][ASCII_SIZE4] = 0;
-  printf( "buff[4]:\n%s\n", buff[4] );
-
-  lseek(fd, 1, SEEK_CUR );
-
-  read( fd, buff[5], ASCII_SIZE5 );
-  buff[5][ASCII_SIZE5] = 0;
-  printf( "buff[5]:\n%s\n", buff[5] );
-
-  lseek(fd, 1, SEEK_CUR );
-
-  read( fd, buff[6], ASCII_SIZE6 );
-  buff[6][ASCII_SIZE6] = 0;
-  printf( "buff[6]:\n%s\n", buff[6] );
+  char buff[ASCII_SIZE][MAX_ASCII_SIZE];
+  read_all( buff, fd );
 
   close(fd);
 }
