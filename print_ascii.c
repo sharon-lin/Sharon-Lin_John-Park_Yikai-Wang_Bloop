@@ -1,4 +1,4 @@
-#define ASCII_SIZE 7
+#define ASCII_SIZE 15
 #define MAX_ASCII_SIZE 200
 
 #include <sys/sem.h>
@@ -15,10 +15,10 @@
 
 int ascii_sizes[ASCII_SIZE] = {
   183, 186, 119,
-  32,
-  33,
-  25,
-  25
+  7, 10, 13,
+  8, 9, 14,
+  1, 10, 11,
+  1, 1, 14
 };
 
 void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd ) {
