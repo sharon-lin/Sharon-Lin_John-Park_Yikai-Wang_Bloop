@@ -25,7 +25,8 @@ void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd ) {
   int i = 0;
   for(; i < ASCII_SIZE; i++ ) {
     read( fd, buff[i], ascii_sizes[i] );
-    buff[i][ascii_sizes[i]] = 0;
+    int x = 0;
+    buff[i][ascii_sizes[i]-1] = 0;
     printf( "buff[%d]:\n%s\n", i, buff[i] );
     lseek(fd, 1, SEEK_CUR );
   }
@@ -41,7 +42,7 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *key ) {
   }
   if( i%3 == 2 ) {
     printf("%s\n", buff[11] );
-    printf( "%s \n", buff[12] );
+    printf( "%s                      %s\n", buff[12], buff[15] );
     printf("%s\n", buff[3] );
   }
 }
