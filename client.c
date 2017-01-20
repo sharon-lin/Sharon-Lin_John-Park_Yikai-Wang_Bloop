@@ -22,14 +22,14 @@ int main( int argc, char *argv[] ) {
   char buffer[MESSAGE_BUFFER_SIZE];
   
   while (1) {
-    printf("enter message: ");
+    printf("Next note: ");
     fgets( buffer, sizeof(buffer), stdin );
     char *p = strchr(buffer, '\n');
     *p = 0;
   
     write( sd, buffer, sizeof(buffer) );
     read( sd, buffer, sizeof(buffer) );
-    printf( "received: %s\n", buffer );
+    //printf( "received: %s\n", buffer );
   }
   
   return 0;

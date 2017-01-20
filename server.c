@@ -48,8 +48,29 @@ void sub_server( int sd ) {
 }
 void process( char * s ) {
 
-  while ( *s ) {
-    *s = (*s - 'a' + 13) % 26 + 'a';
-    s++;
-  }
+  if (strcmp(s,"A") == 0)
+       system("mpg123 sound1.mp3");
+  else if (strcmp(s,"B") == 0)
+       system("mpg123 sound1.mp3");
+  else if (strcmp(s,"B") == 0)
+       system("mpg123 sound2.mp3");
+  else if (strcmp(s,"b") == 0)
+       system("mpg123 sound2.mp3");
+  else if (strcmp(s,"C") == 0)
+       system("mpg123 sound3.mp3");
+  else if (strcmp(s,"c") == 0)
+       system("mpg123 sound3.mp3");
+  else if (strcmp(s,"D") == 0)
+       system("mpg123 sound4.mp3");
+  else if (strcmp(s,"d") == 0)
+       system("mpg123 sound4.mp3");
+  else if (strcmp(s,"E") == 0)
+       system("mpg123 sound5.mp3");
+  else if (strcmp(s,"e") == 0)
+       system("mpg123 sound5.mp3");
+  else if (strcmp(s,"F") == 0)
+       system("mpg123 sound6.mp3");
+  else if (strcmp(s,"f") == 0)
+       system("mpg123 sound6.mp3");
+
 }

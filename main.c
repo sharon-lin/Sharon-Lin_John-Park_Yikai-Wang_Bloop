@@ -28,10 +28,8 @@ int main(){
     // Alternatively, need to figure out "global display" of scrolling notes and local 
     // display of notes to be added to the global display
 
-
-
     if(!*(dest+1)) continue;
-    system("ffplay piano1.mp3");
+    //system("ffplay piano1.mp3");
   }
 
   // Plan of work:
