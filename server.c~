@@ -11,6 +11,8 @@
 #include <ctype.h>
 
 #include "networking.h"
+//#include "networking.c"
+
 #include "print_ascii.h"
 
 void process( char * s );
@@ -56,6 +58,26 @@ void sub_server( int sd ) {
 
   }
 
+/*
+void save_sound(char * sequence){
+  FILE *fp;
+  char ch;
+  int there_was_error;
+
+
+  fp=fopen(file_name,"w");
+  
+  if (fp == NULL)
+    sequence = "Disc full or no permission";
+  
+  else{ 
+    fputs(sequence, fp);
+    directory_num++;
+    sequence = "Successfully made";
+  }
+
+  fclose(fp);
+  }*/
 
 void postmessage (char * sequence, char * filename)
 {
@@ -159,6 +181,7 @@ void process( char * args ) {
   else if (strcmp(cmd,"save")==0){
     cmd = strtok(NULL," ");
     filename = strtok(NULL," ");
+    //save_sound(cmd);
     postmessage(cmd, filename);
   }
   

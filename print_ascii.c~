@@ -143,4 +143,21 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *numkeys, char * k
   }
 }
 
+void main(int argc, char const *argv[]
+) {
 
+  int fd = open("ascii.txt", O_RDONLY);
+
+  char buff[ASCII_SIZE][MAX_ASCII_SIZE];
+  read_all( buff, fd );
+  close(fd);
+
+  printf("\nChecking for inputs (argv must be >= 2)...\n" );
+  int i = 1;
+  for(; i <= argc; i++ )
+    printf("argv[%d]: %s\n", i, argv[i] );
+
+  printf("\n" );
+  print_drums( buff, argv[1], argv[2] );
+
+}
