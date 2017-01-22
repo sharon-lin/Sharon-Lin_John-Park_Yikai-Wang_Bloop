@@ -30,7 +30,3 @@ yikaiW -- 2017-1-21 @22:55
 sharonL -- 2017-1-22 @12:52
   Finished playing sounds across serv/client
   Working on saving files and integrating animation
-
-sharonL -- 2017-1-22 @16:56
-  Fetches and creates .txt files for sequences
-  Edited makefile
