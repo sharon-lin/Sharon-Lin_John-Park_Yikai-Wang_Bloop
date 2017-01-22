@@ -75,8 +75,12 @@ void postmessage (char * sequence, char * filename)
   strcpy(str, dn);
   strcat(str, ".txt");
   */
+
+  char str[30];
+  strcpy(str, filename);
+  strcat(str, ".txt");
  
-  if ((outputfile = fopen(filename, "w")) == NULL)
+  if ((outputfile = fopen(str, "w")) == NULL)
     {
       fprintf(stderr, "Cannot open\n");
       return;
@@ -102,7 +106,6 @@ void play_sound(char * sequence){
 
   int length = (int)strlen(sequence);
   int i = 0;
-
 
   int fd = open("ascii.txt", O_RDONLY);
   char anime[ASCII_SIZE][MAX_ASCII_SIZE];
@@ -147,6 +150,42 @@ void play_sound(char * sequence){
   }
 }
 
+void play_original(char * sequence){
+
+  int length = (int)strlen(sequence);
+
+    for (int i =0;i<length;i++){
+      if (sequence[i]=='A')
+	system("mpg123 sounds/sound1.mp3");
+      else if (sequence[i]=='a')
+	system("mpg123 sounds/sound1.mp3");
+      else if (sequence[i]=='B')
+	system("mpg123 sounds/sound2.mp3");
+      else if (sequence[i]=='b')
+	system("mpg123 sounds/sound2.mp3");
+      else if (sequence[i]=='C')
+	system("mpg123 sounds/sound3.mp3");
+      else if (sequence[i]=='c')
+	system("mpg123 sounds/sound3.mp3");
+      else if (sequence[i]=='D')
+	system("mpg123 sounds/sound4.mp3");
+      else if (sequence[i]=='d')
+	system("mpg123 sounds/sound4.mp3");
+      else if (sequence[i]=='E')
+	system("mpg123 sounds/sound5.mp3");
+      else if (sequence[i]=='e')
+	system("mpg123 sound5.mp3");
+      else if (sequence[i]=='F')
+	system("mpg123 sound6.mp3");
+      else if (sequence[i]=='f')
+	system("mpg123 sound6.mp3");
+      else if (sequence[i]=='G')
+	system("mpg123 sound7.mp3");
+      else if (sequence[i]=='g')
+	system("mpg123 sound7.mp3");
+    }
+}
+
 void lower_string(char s[]) {
   int c = 0;
 
@@ -167,12 +206,13 @@ void process( char * args ) {
   
   if (strcmp(cmd,"play") == 0){
     cmd = strtok(NULL," ");
-    play_sound(cmd);
+    //play_sound(cmd);
+    play_original(cmd);
   }
   
   else if (strcmp(cmd,"save")==0){
-    cmd = strtok(NULL," ");
     filename = strtok(NULL," ");
+    cmd = strtok(NULL," ");
     postmessage(cmd, filename);
   }
   

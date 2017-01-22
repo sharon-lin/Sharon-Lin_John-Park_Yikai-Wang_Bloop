@@ -113,8 +113,9 @@ void print_top( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int i, char keyhit, char 
 
 }
 
-void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *numkeys, char * keyhit ) {
-  int i = atoi(numkeys);
+void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int numkeys, char * keyhit ) {
+  //int i = atoi(numkeys);
+  int i = numkeys;
   char c = 65; char diff = 0;
 
   if( i > 2 ) {

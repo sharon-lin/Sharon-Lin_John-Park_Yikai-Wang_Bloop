@@ -150,8 +150,4 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *numkeys, char * k
     printf("     %c    %s       %c\n\n", c + diff, s, c + diff + 1 );
   }
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 67a64364ef2a05fd6523650391cad995736082da
