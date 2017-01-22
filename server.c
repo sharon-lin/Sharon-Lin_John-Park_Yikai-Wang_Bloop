@@ -13,6 +13,8 @@
 #include "networking.h"
 //#include "networking.c"
 
+#include "print_ascii.h"
+
 void process( char * s );
 void sub_server( int sd );
 
@@ -22,7 +24,7 @@ int main(){
   int sd, connection;
 
   sd = server_setup();
-    
+
   while (1) {
 
     connection = server_connect( sd );
@@ -50,9 +52,9 @@ void sub_server( int sd ) {
 
     printf("[SERVER %d] received: %s\n", getpid(), buffer );
     process( buffer );
-    write( sd, buffer, sizeof(buffer));    
+    write( sd, buffer, sizeof(buffer));
   }
-  
+
   }
 
 
@@ -60,8 +62,8 @@ void sub_server( int sd ) {
 void play_sound(char * sequence){
 
   int length = (int)strlen(sequence);
-
-  for (int i =0;i<length;i++){
+  int i =0;
+  for (;i<length;i++){
     if (sequence[i]=='A')
       system("mpg123 sounds/sound1.mp3");
     else if (sequence[i]=='a')
@@ -95,7 +97,7 @@ void play_sound(char * sequence){
 
 void lower_string(char s[]) {
   int c = 0;
- 
+
   while (s[c] != '\0') {
     if (s[c] >= 'A' && s[c] <= 'Z') {
       s[c] = s[c] + 32;

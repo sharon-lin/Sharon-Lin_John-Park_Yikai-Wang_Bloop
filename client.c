@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include "networking.h"
+#include "print_ascii.h"
 
 int main( int argc, char *argv[] ) {
 
@@ -14,7 +15,7 @@ int main( int argc, char *argv[] ) {
   }
   else
     host = argv[1];
-  
+
   int sd;
 
   sd = client_connect( host );
@@ -24,18 +25,18 @@ int main( int argc, char *argv[] ) {
   printf("%s",menu_options);
 
   char buffer[MESSAGE_BUFFER_SIZE];
-  
+
   while (1) {
     printf("Next note: ");
     fgets( buffer, sizeof(buffer), stdin );
     char *p = strchr(buffer, '\n');
     *p = 0;
-  
+
     write( sd, buffer, sizeof(buffer) );
     read( sd, buffer, sizeof(buffer) );
     printf( "received: %s\n", buffer );
     //send_message_all(buffer);
   }
-  
+
   return 0;
 }
