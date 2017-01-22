@@ -20,7 +20,7 @@ int main( int argc, char *argv[] ) {
 
   sd = client_connect( host );
 
-  char * menu_options = "******************************\nWELCOME TO THE MUSIC MAKER\n\nOPTIONS:\n\nPLAY [number of drums (1-7)] [sequence (A-G)] - Will play the sounds in the sequences\nSAVE [filename] [sequence] - Will save the notes in the sequence\n\n******************************\n\n";
+  char * menu_options = "******************************\nWELCOME TO THE MUSIC MAKER\n\nOPTIONS:\n\nPLAY [number of drums (1-7)] [sequence (A-G)] - Will play the sounds in the sequences\nSAVE [filename] [sequence] - Will save the notes in the sequence\nGET [filename] will return the value saved in the file\n\n******************************\n\n";
 
   printf("%s",menu_options);
 
