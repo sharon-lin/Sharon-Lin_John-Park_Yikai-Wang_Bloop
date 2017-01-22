@@ -19,6 +19,10 @@ int main( int argc, char *argv[] ) {
 
   sd = client_connect( host );
 
+  char * menu_options = "******************************\nWELCOME TO THE MUSIC MAKER\n\nOPTIONS:\n\nPLAY [sequence] - Will play the sounds in the sequences\nSAVE [sequence] - Will save the notes in the sequence\nDIRECTORY - Will take you to a private directory of songs\n\n******************************\n\n";
+
+  printf("%s",menu_options);
+
   char buffer[MESSAGE_BUFFER_SIZE];
   
   while (1) {
@@ -29,7 +33,8 @@ int main( int argc, char *argv[] ) {
   
     write( sd, buffer, sizeof(buffer) );
     read( sd, buffer, sizeof(buffer) );
-    //printf( "received: %s\n", buffer );
+    printf( "received: %s\n", buffer );
+    //send_message_all(buffer);
   }
   
   return 0;

@@ -1,7 +1,15 @@
+#include <ctype.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+#include <errno.h>
+#include <string.h>
+#include <pthread.h>
+#include <sys/types.h>
+
 
 #include "networking.h"
 //#include "networking.c"
@@ -9,7 +17,8 @@
 void process( char * s );
 void sub_server( int sd );
 
-int main() {
+
+int main(){
 
   int sd, connection;
 
@@ -45,32 +54,53 @@ void sub_server( int sd ) {
     write( sd, buffer, sizeof(buffer));    
   }
   
+  }
+
+
+
+void play_sound(char * sequence){
+
+  int length = (int)strlen(sequence);
+
+  for (int i =0;i<length;i++){
+    if (sequence[i]=='A')
+      system("mpg123 sound1.mp3");
+    else if (sequence[i]=='a')
+      system("mpg123 sound1.mp3");
+    else if (sequence[i]=='B')
+      system("mpg123 sound2.mp3");
+    else if (sequence[i]=='b')
+      system("mpg123 sound2.mp3");
+    else if (sequence[i]=='C')
+      system("mpg123 sound3.mp3");
+    else if (sequence[i]=='c')
+      system("mpg123 sound3.mp3");
+    else if (sequence[i]=='D')
+      system("mpg123 sound4.mp3");
+    else if (sequence[i]=='d')
+      system("mpg123 sound4.mp3");
+    else if (sequence[i]=='E')
+      system("mpg123 sound5.mp3");
+    else if (sequence[i]=='e')
+      system("mpg123 sound5.mp3");
+    else if (sequence[i]=='F')
+      system("mpg123 sound6.mp3");
+    else if (sequence[i]=='f')
+      system("mpg123 sound6.mp3");
+    else if (sequence[i]=='G')
+      system("mpg123 sound7.mp3");
+    else if (sequence[i]=='g')
+    system("mpg123 sound7.mp3");
+  }
 }
-void process( char * s ) {
 
-  if (strcmp(s,"A") == 0)
-       system("mpg123 sound1.mp3");
-  else if (strcmp(s,"B") == 0)
-       system("mpg123 sound1.mp3");
-  else if (strcmp(s,"B") == 0)
-       system("mpg123 sound2.mp3");
-  else if (strcmp(s,"b") == 0)
-       system("mpg123 sound2.mp3");
-  else if (strcmp(s,"C") == 0)
-       system("mpg123 sound3.mp3");
-  else if (strcmp(s,"c") == 0)
-       system("mpg123 sound3.mp3");
-  else if (strcmp(s,"D") == 0)
-       system("mpg123 sound4.mp3");
-  else if (strcmp(s,"d") == 0)
-       system("mpg123 sound4.mp3");
-  else if (strcmp(s,"E") == 0)
-       system("mpg123 sound5.mp3");
-  else if (strcmp(s,"e") == 0)
-       system("mpg123 sound5.mp3");
-  else if (strcmp(s,"F") == 0)
-       system("mpg123 sound6.mp3");
-  else if (strcmp(s,"f") == 0)
-       system("mpg123 sound6.mp3");
+void process( char * args ) {
+  char * cmd;
+  cmd = strtok(args, " ");
+  if (strcmp(tolower(cmd),"play") == 0){
+    cmd = strtok(NULL," ");
+    play_sound(cmd);
+  }
 
+  //  play_sounds(a[1]);
 }
