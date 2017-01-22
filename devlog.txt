@@ -23,3 +23,7 @@ yikaiW -- 2017-1-17 @22:35
 
 yikaiW -- 2017-1-18 @23:12
   Ascii reading improved
+
+yikaiW -- 2017-1-21 @22:55
+  Finished drum animations
+
