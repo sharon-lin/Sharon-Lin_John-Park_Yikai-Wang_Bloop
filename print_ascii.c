@@ -32,7 +32,8 @@ void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd ) {
   }
 }
 
-void print_top( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char isHit, int i, char * s1, char * s2, char * s3 ) {
+void print_top( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int i, char * keyhit, char * s1, char * s2, char * s3 ) {
+  int isHit = atoi(keyhit);
   if( i == 6 ) {
     if(!isHit) {
       printf("%s%s\n", s3, buff[11] );
@@ -87,7 +88,7 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *key ) {
     char * s1 = "      ";
     char * s2 = "     ";
     char * s3 = "                         ";
-    print_top( buff, 0, 3, s1, s2, s3 );
+    print_top( buff, 3, "0", s1, s2, s3 );
     printf("%s\n", buff[0] );
     printf("     %c    %s       %c      %s    %c\n", c, s1, c + 1, s2, c + 2 );
     diff += 3;
@@ -96,7 +97,7 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *key ) {
       char * s1 = "     ";
       char * s2 = "    ";
       char * s3 = "                  ";
-      print_top( buff, 0, 6, s1, s2, s3 );
+      print_top( buff, 6, "0", s1, s2, s3 );
       printf("%s\n", buff[1] );
       printf("       %c      %s    %c     %s      %c\n", c + diff, s1, c + diff + 1, s2, c + diff + 2 );
       diff += 3;
@@ -105,13 +106,13 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *key ) {
 
   if( i%3 == 1 ) {
     char * s = "                  ";
-    print_top( buff, 0, 1, s, "", "" );
+    print_top( buff, 1, "0", s, "", "" );
     printf("%s\n", buff[2] );
     printf("%s     %c\n", s, c + diff );
   }
   if( i%3 == 2 ) {
     char * s = "                      ";
-    print_top( buff, 0, 2, s, "", "" );
+    print_top( buff, 2, "0", s, "", "" );
     printf("%s\n", buff[3] );
     printf("     %c    %s       %c\n", c + diff, s, c + diff + 1 );
   }
