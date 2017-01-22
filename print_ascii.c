@@ -14,12 +14,20 @@
 #include "print_ascii.h"
 
 void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd ) {
+  int ascii_sizes[ASCII_SIZE] = {
+    183, 186, 119, 186,
+    7, 10, 13,
+    8, 9, 14,
+    1, 10, 11,
+    1, 1, 14
+  };
+
   int i = 0;
   for(; i < ASCII_SIZE; i++ ) {
     read( fd, buff[i], ascii_sizes[i] );
     int x = 0;
     buff[i][ascii_sizes[i]-1] = 0;
-    printf( "buff[%d]:\n%s\n", i, buff[i] );
+    // printf( "buff[%d]:\n%s\n", i, buff[i] );
     lseek(fd, 1, SEEK_CUR );
   }
 }
@@ -142,5 +150,4 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *numkeys, char * k
     printf("     %c    %s       %c\n\n", c + diff, s, c + diff + 1 );
   }
 }
-
 
