@@ -92,7 +92,8 @@ void get_message (char * filename, int sd)
   strcat(str, ".txt");
  
   if ((outputfile = fopen(str, "r")) == NULL)
-      fprintf(stderr, "Cannot open\n");
+    write(sd,"File does not exist.", 25);
+  //      fprintf(stderr, "Cannot open\n");
 
   else{
     fgets(message,sizeof(message),outputfile);
@@ -104,7 +105,7 @@ void get_message (char * filename, int sd)
   fclose(outputfile);
 }
 
-void postmessage (char * sequence, char * filename)
+void postmessage (char * sequence, char * filename, int sd)
 {
   int i, bytesread;
   char buffer[255];
@@ -127,10 +128,8 @@ void postmessage (char * sequence, char * filename)
   strcat(str, ".txt");
  
   if ((outputfile = fopen(str, "w")) == NULL)
-    {
-      fprintf(stderr, "Cannot open\n");
-      return;
-    }
+    //      fprintf(stderr, "File '%s.txt' does not exist.", filename);
+    write(sd, "Error creating file.", 20);
  
   for (i = 0; i < 100; i++)
     {
@@ -259,7 +258,7 @@ void process( char * args , int sd) {
   else if (strcmp(cmd,"save")==0){
     filename = strtok(NULL," ");
     cmd = strtok(NULL," ");
-    postmessage(cmd, filename);
+    postmessage(cmd, filename, sd);
   }
   
   else if (strcmp(cmd,"get")==0){
