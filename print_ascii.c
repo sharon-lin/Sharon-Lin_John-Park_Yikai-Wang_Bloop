@@ -80,15 +80,15 @@ void print_top( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int i, char * keyhit, cha
 
 }
 
-void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *key ) {
-  int i = atoi(key);
+void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *numkeys, char * keyhit ) {
+  int i = atoi(numkeys);
   char c = 65; char diff = 0;
 
   if( i > 2 ) {
     char * s1 = "      ";
     char * s2 = "     ";
     char * s3 = "                         ";
-    print_top( buff, 3, "0", s1, s2, s3 );
+    print_top( buff, 3, keyhit, s1, s2, s3 );
     printf("%s\n", buff[0] );
     printf("     %c    %s       %c      %s    %c\n", c, s1, c + 1, s2, c + 2 );
     diff += 3;
@@ -97,7 +97,7 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *key ) {
       char * s1 = "     ";
       char * s2 = "    ";
       char * s3 = "                  ";
-      print_top( buff, 6, "0", s1, s2, s3 );
+      print_top( buff, 6, keyhit, s1, s2, s3 );
       printf("%s\n", buff[1] );
       printf("       %c      %s    %c     %s      %c\n", c + diff, s1, c + diff + 1, s2, c + diff + 2 );
       diff += 3;
@@ -106,13 +106,13 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *key ) {
 
   if( i%3 == 1 ) {
     char * s = "                  ";
-    print_top( buff, 1, "0", s, "", "" );
+    print_top( buff, 1, keyhit, s, "", "" );
     printf("%s\n", buff[2] );
     printf("%s     %c\n", s, c + diff );
   }
   if( i%3 == 2 ) {
     char * s = "                      ";
-    print_top( buff, 2, "0", s, "", "" );
+    print_top( buff, 2, keyhit, s, "", "" );
     printf("%s\n", buff[3] );
     printf("     %c    %s       %c\n", c + diff, s, c + diff + 1 );
   }
@@ -127,6 +127,6 @@ void main(int argc, char const *argv[]
   close(fd);
 
   printf("argv[1]: %s\n", argv[1] );
-  print_drums( buff, argv[1]);
+  print_drums( buff, argv[1], "0" );
 
 }
