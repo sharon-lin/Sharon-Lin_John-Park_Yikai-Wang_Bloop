@@ -15,10 +15,16 @@ client.o: client.c networking.h
 networking.o: networking.c networking.h
 	gcc -c networking.c
 
+<<<<<<< HEAD
+clean: 
+	rm *.o server client *~
+=======
 print_ascii.o: print_ascii.c print_ascii.h
 	gcc -c print_ascii.c
 
-clean: 
-	rm *.o server client *~
-
-
+clean:
+	rm -f *.o
+	rm -f *~
+	rm server
+	rm client
+>>>>>>> 4d6cc3f064f570d71970561056e29aa17d133f63
