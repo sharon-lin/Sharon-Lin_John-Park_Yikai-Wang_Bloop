@@ -1,6 +1,3 @@
-#define ASCII_SIZE 16
-#define MAX_ASCII_SIZE 250
-
 #include <sys/sem.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,31 +11,7 @@
 #include <errno.h>
 #include <unistd.h>
 
-int main(){
-
-  printf("Hi! What note would you like to play: ");
-
-  int decision;
-
-  scanf("%d", &decision);
-
-  system("mpg123 piano1.mp3");
-
-  /*
-  int fd = open("ascii.txt", O_RDONLY);
-
-  char buff[ASCII_SIZE1];
-  read( fd, buff, sizeof(buff) );
-  buff[ASCII_SIZE1-1] = 0;
-  printf( "%s\n", buff );
-=======
-int ascii_sizes[ASCII_SIZE] = {
-  183, 186, 119, 186,
-  7, 10, 13,
-  8, 9, 14,
-  1, 10, 11,
-  1, 1, 14
-};
+#include "print_ascii.h"
 
 void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd ) {
   int i = 0;
@@ -155,7 +128,6 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *numkeys, char * k
       diff += 3;
     }
   }
->>>>>>> 88cbbbb7d5c9003884c49378e8576ef9b7b099cc
 
   if( i%3 == 1 ) {
     char * s = "                  ";
@@ -173,12 +145,8 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *numkeys, char * k
 
 void main(int argc, char const *argv[]
 ) {
+
   int fd = open("ascii.txt", O_RDONLY);
-
-<<<<<<< HEAD
-
-  close(fd);
-  */
 
   char buff[ASCII_SIZE][MAX_ASCII_SIZE];
   read_all( buff, fd );
@@ -191,9 +159,5 @@ void main(int argc, char const *argv[]
 
   printf("\n" );
   print_drums( buff, argv[1], argv[2] );
-
-
-  return 0;
-
 
 }
