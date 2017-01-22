@@ -16,4 +16,7 @@ networking.o: networking.c networking.h
 	gcc -c networking.c
 
 clean: 
-	rm *.o, *~
+	rm *.o
+	rm *~
+	rm server
+	rm client

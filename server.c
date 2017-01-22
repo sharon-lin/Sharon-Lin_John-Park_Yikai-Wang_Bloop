@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -9,7 +8,7 @@
 #include <string.h>
 #include <pthread.h>
 #include <sys/types.h>
-
+#include <ctype.h>
 
 #include "networking.h"
 //#include "networking.c"
@@ -94,10 +93,22 @@ void play_sound(char * sequence){
   }
 }
 
+void lower_string(char s[]) {
+  int c = 0;
+ 
+  while (s[c] != '\0') {
+    if (s[c] >= 'A' && s[c] <= 'Z') {
+      s[c] = s[c] + 32;
+    }
+    c++;
+  }
+}
+
 void process( char * args ) {
   char * cmd;
   cmd = strtok(args, " ");
-  if (strcmp(tolower(cmd),"play") == 0){
+  lower_string(cmd);
+  if (strcmp(cmd,"play") == 0){
     cmd = strtok(NULL," ");
     play_sound(cmd);
   }
