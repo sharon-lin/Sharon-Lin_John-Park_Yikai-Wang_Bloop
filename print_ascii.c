@@ -117,9 +117,6 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *key ) {
   }
 }
 
-void print_hit( char buff[ASCII_SIZE][MAX_ASCII_SIZE], char *key ) {
-}
-
 void main(int argc, char const *argv[]
 ) {
   int fd = open("ascii.txt", O_RDONLY);
