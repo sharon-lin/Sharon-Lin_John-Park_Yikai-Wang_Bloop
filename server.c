@@ -14,7 +14,7 @@
 #include "networking.h"
 #include "print_ascii.h"
 
-void process( char * s );
+void process( char * s , int sd);
 void sub_server( int sd );
 
 int directory_num = 0;
@@ -51,12 +51,58 @@ void sub_server( int sd ) {
   while (read( sd, buffer, sizeof(buffer) )) {
 
     printf("[SERVER %d] received: %s\n", getpid(), buffer );
-    process( buffer );
+    process( buffer ,sd);
     write( sd, buffer, sizeof(buffer));
   }
 
+}
+
+/*
+void get_message(char * filename, int sd){
+  FILE * outputfile;
+  char str[30];
+  char * message_in_file[80];
+  //  char buffer[MESSAGE_BUFFER_SIZE];
+  strcpy(str, filename);
+  strcat(str, ".txt");
+
+  if (outputfile = fopen(str, "rw") == NULL){
+    filename = "Could not open";
+  }
+  else{
+    filename = "";
+    while(fgets(message_in_file,80,outputfile)!=NULL)
+      //strcat(filename, message_in_file);
+      write(sd, message_in_file, 80);
+      //puts(message_in_file);
+  }
+  //  write(sd, buffer, sizeof(buffer);
+  //  filename = message_in_file;
+  fclose(outputfile);
+  }*/
+
+void get_message (char * filename, int sd)
+{
+  int i, bytesread;
+  char * message;
+  FILE *outputfile;
+ 
+  char str[30];
+  strcpy(str, filename);
+  strcat(str, ".txt");
+ 
+  if ((outputfile = fopen(str, "r")) == NULL)
+      fprintf(stderr, "Cannot open\n");
+
+  else{
+    fgets(message,sizeof(message),outputfile);
+    write(sd,message,sizeof(message));
+    //printf("%s", message);
+    //    printf("%d", sd);
   }
 
+  fclose(outputfile);
+}
 
 void postmessage (char * sequence, char * filename)
 {
@@ -197,7 +243,7 @@ void lower_string(char s[]) {
   }
 }
 
-void process( char * args ) {
+void process( char * args , int sd) {
   char * cmd;
   char * filename;
 
@@ -214,6 +260,11 @@ void process( char * args ) {
     filename = strtok(NULL," ");
     cmd = strtok(NULL," ");
     postmessage(cmd, filename);
+  }
+  
+  else if (strcmp(cmd,"get")==0){
+    filename = strtok(NULL," ");
+    get_message(filename, sd);
   }
   
 }

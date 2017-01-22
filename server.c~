@@ -76,9 +76,11 @@ void postmessage (char * sequence, char * filename)
   strcat(str, ".txt");
   */
 
-  strcat(filename, ".txt");
+  char str[30];
+  strcpy(str, filename);
+  strcat(str, ".txt");
  
-  if ((outputfile = fopen(filename, "w")) == NULL)
+  if ((outputfile = fopen(str, "w")) == NULL)
     {
       fprintf(stderr, "Cannot open\n");
       return;
@@ -204,8 +206,8 @@ void process( char * args ) {
   
   if (strcmp(cmd,"play") == 0){
     cmd = strtok(NULL," ");
-    //play_sound(cmd);
-    play_original(cmd);
+    play_sound(cmd);
+    //play_original(cmd);
   }
   
   else if (strcmp(cmd,"save")==0){
