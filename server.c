@@ -16,6 +16,7 @@
 void process( char * s );
 void sub_server( int sd );
 
+int directory_num = 0;
 
 int main(){
 
@@ -55,6 +56,64 @@ void sub_server( int sd ) {
   
   }
 
+/*
+void save_sound(char * sequence){
+  FILE *fp;
+  char ch;
+  int there_was_error;
+
+
+  fp=fopen(file_name,"w");
+  
+  if (fp == NULL)
+    sequence = "Disc full or no permission";
+  
+  else{ 
+    fputs(sequence, fp);
+    directory_num++;
+    sequence = "Successfully made";
+  }
+
+  fclose(fp);
+  }*/
+
+void postmessage (char * sequence)
+{
+  int i, bytesread;
+  char buffer[255];
+
+  strcpy(buffer, sequence);
+  FILE *outputfile;
+ 
+  bzero(buffer,255);
+
+  char dn[10];
+  sprintf(dn, "%d", directory_num);
+
+  char str[30];
+  strcpy(str, dn);
+  strcat(str, ".txt");
+     
+  if ((outputfile = fopen(str, "w")) == NULL)
+    {
+      fprintf(stderr, "Cannot open\n");
+      return;
+    }
+ 
+  for (i = 0; i < 100; i++)
+    {
+      if (putc(sequence[i], outputfile) == EOF)
+        {
+	  printf ("Write error\n");
+	  break; /* stop the for loop */
+        }
+    }
+  
+
+  directory_num++;
+     
+  fclose(outputfile);
+}
 
 
 void play_sound(char * sequence){
@@ -108,10 +167,16 @@ void process( char * args ) {
   char * cmd;
   cmd = strtok(args, " ");
   lower_string(cmd);
+  
   if (strcmp(cmd,"play") == 0){
     cmd = strtok(NULL," ");
     play_sound(cmd);
   }
-
-  //  play_sounds(a[1]);
+  
+  else if (strcmp(cmd,"save")==0){
+    cmd = strtok(NULL," ");
+    //save_sound(cmd);
+    postmessage(cmd);
+  }
+  
 }
