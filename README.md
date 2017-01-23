@@ -10,3 +10,5 @@ John Park - menu design
 Yikai Wang - project manager, drum animations
 
 ## Running the program
+
+## File Structure
