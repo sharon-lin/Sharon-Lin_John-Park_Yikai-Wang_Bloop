@@ -5,7 +5,7 @@ A C socket application that allows users to play and record drum sequences.
 ## Team Members   
 Sharon Lin - backend, networking
 
-John Park - menu design
+John Park - menu design, aiding with drum animations
 
 Yikai Wang - project manager, drum animations
 
