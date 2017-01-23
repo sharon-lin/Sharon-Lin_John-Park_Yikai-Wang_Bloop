@@ -71,3 +71,13 @@ int client_connect( char *host ) {
   return sd;
 }
  
+void lower_string(char s[]) {
+  int c = 0;
+
+  while (s[c] != '\0') {
+    if (s[c] >= 'A' && s[c] <= 'Z') {
+      s[c] = s[c] + 32;
+    }
+    c++;
+  }
+}

@@ -198,8 +198,8 @@ void play_sound(char * sequence){
 void play_original(char * sequence){
 
   int length = (int)strlen(sequence);
-
-    for (int i =0;i<length;i++){
+  int i =0;
+    for (;i<length;i++){
       if (sequence[i]=='A')
 	system("mpg123 sounds/sound1.mp3");
       else if (sequence[i]=='a')
@@ -219,27 +219,22 @@ void play_original(char * sequence){
       else if (sequence[i]=='E')
 	system("mpg123 sounds/sound5.mp3");
       else if (sequence[i]=='e')
-	system("mpg123 sound5.mp3");
+	system("mpg123 sounds/sound5.mp3");
       else if (sequence[i]=='F')
-	system("mpg123 sound6.mp3");
+	system("mpg123 sounds/sound6.mp3");
       else if (sequence[i]=='f')
-	system("mpg123 sound6.mp3");
+	system("mpg123 sounds/sound6.mp3");
       else if (sequence[i]=='G')
-	system("mpg123 sound7.mp3");
+	system("mpg123 sounds/sound7.mp3");
       else if (sequence[i]=='g')
-	system("mpg123 sound7.mp3");
+	system("mpg123 sounds/sound7.mp3");
     }
 }
 
-void lower_string(char s[]) {
-  int c = 0;
+/****************************************
+ */
 
-  while (s[c] != '\0') {
-    if (s[c] >= 'A' && s[c] <= 'Z') {
-      s[c] = s[c] + 32;
-    }
-    c++;
-  }
+void list_files(){
 }
 
 void process( char * args , int sd) {
@@ -252,7 +247,7 @@ void process( char * args , int sd) {
   if (strcmp(cmd,"play") == 0){
     cmd = strtok(NULL," ");
     //play_sound(cmd);
-    play_original(cmd);
+    //play_original(cmd);
   }
   
   else if (strcmp(cmd,"save")==0){
