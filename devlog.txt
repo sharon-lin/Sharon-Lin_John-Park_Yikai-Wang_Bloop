@@ -34,3 +34,7 @@ sharonL -- 2017-1-22 @12:52
 sharonL -- 2017-1-22 @16:56
   Fetches and creates .txt files for sequences
   Edited makefile
+
+sharonL -- 2017-1-23 @13:01
+  Added client-side sound play 
+  Worked on listing files + file stat + shared memory
