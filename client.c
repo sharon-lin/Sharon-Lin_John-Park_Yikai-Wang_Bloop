@@ -73,6 +73,8 @@ void play_sound(char * sequence){
     int c = tolower(sequence[i]);
     // printf( "%c\n", sequence[i] );
     if ((c=='a') && (numdrums > 0)) {
+      usleep(300000);
+      system("cls");
       print_drums( anime, numdrums, "a" );
       system("mpg123 sounds/sound1.mp3");
     }
@@ -81,22 +83,32 @@ void play_sound(char * sequence){
       system("mpg123 sounds/sound2.mp3");
     }
     else if ((c=='c') && (numdrums > 2)) {
+      usleep(300000);
+      system("cls");
       print_drums( anime, numdrums, "c" );
       system("mpg123 sounds/sound3.mp3");
     }
     else if ((c=='d') && (numdrums > 3)) {
+      usleep(300000);
+      system("cls");
       print_drums( anime, numdrums, "d" );
       system("mpg123 sounds/sound3.mp3");
     }
     else if ((c=='e') && (numdrums > 4)) {
+      usleep(300000);
+      system("cls");
       print_drums( anime, numdrums, "e" );
       system("mpg123 sounds/sound5.mp3");
     }
     else if ((c=='f') && (numdrums > 5)) {
+      usleep(300000);
+      system("cls");
       print_drums( anime, numdrums, "f" );
       system("mpg123 sounds/sound6.mp3");
     }
     else if ((c=='g') && (numdrums > 6)) {
+      usleep(300000);
+      system("cls");
       print_drums( anime, numdrums, "g" );
       system("mpg123 sounds/sound7.mp3");
     }
