@@ -64,6 +64,34 @@ $ ./client [IP ADDRESS OF SERVER]
 
 #### server.c
 
+- **void subserver(int sd);**
+ - Input: socket descriptor
+  - Reads input from client and sends input to process
+ - Output: None
+  - Writes output to client
+- **void get_message (char * filename, char * args);**
+ - Input: filename, buffer
+  - Retrieves contents of specified file
+ - Output: None
+  - Returns the contents of the file or "There are no files" to the client buffer
+- **void delete_file(char * filename, char * args);**
+ - Input: filename, buffer 
+  - Deletes the specified filename 
+ - Output: None
+  - Returns success or failure statement to the client buffer
+- **void list_files(char * args);**
+ - Input: buffer
+ - Output: None
+  - Prints all of the current .txt sound sequence files to the client buffer
+- **void postmessage (char * sequence, char * filename, char * args);**
+ - Input: sequence of notes, filename, buffer
+  - Reads sequence of letter-notes inputted by client and the desired filename
+ - Output: None
+  - Saves a .txt file on the server with specified filename and content, returns success or error statement to client buffer
+- **void process( char * args , int sd);**
+ - Input: buffer, socket descriptor
+ - Output: processes commands from client
+
 #### networking.c
 
 #### print_ascii.c
