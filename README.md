@@ -12,3 +12,6 @@ Yikai Wang - project manager, drum animations
 ## Running the program
 
 ## File Structure
+
+## Bugs
+- The buffer overflows when the query string is too long
