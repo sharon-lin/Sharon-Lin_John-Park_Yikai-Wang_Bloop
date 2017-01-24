@@ -11,6 +11,14 @@ Yikai Wang - project manager, drum animations
 
 ## Running the program
 
+On Linux machines 
+-----------------
+
+- If mpg123 is not installed
+```
+$ sudo apt-get mpg123
+```
+
 ## File Structure
 
 ## Bugs
