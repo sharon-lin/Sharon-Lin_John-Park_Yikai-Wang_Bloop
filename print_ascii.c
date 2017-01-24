@@ -28,7 +28,7 @@ void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd ) {
     int x = 0;
     buff[i][ascii_sizes[i]-1] = 0;
     // printf( "buff[%d]:\n%s\n", i, buff[i] );
-    lseek(fd, 1, SEEK_CUR );
+    lseek(fd, 0, SEEK_CUR );
   }
 }
 
