@@ -38,3 +38,7 @@ sharonL -- 2017-1-22 @16:56
 sharonL -- 2017-1-23 @13:01
   Added client-side sound play 
   Worked on listing files + file stat + shared memory
+
+sharonL -- 2017-1-24 @00:01
+  Added final adjustments to get, save, list
+  Added delete functionality

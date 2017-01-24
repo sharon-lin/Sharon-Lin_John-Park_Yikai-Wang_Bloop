@@ -18,17 +18,17 @@
 #include "print_ascii.h"
 
 
-//#define MAX_CLIENTS 4
+#define MAX_CLIENTS 4
 
 void process( char * s , int sd);
 void sub_server( int sd );
 
-//int directory_num = 0;
+int directory_num = 0;
 
-//int total_clients = 0;
+int total_clients = 0;
 
-//sem_t mutex;
-//int counter;
+sem_t mutex;
+int counter;
 
 int main(){
 
@@ -67,46 +67,25 @@ void sub_server( int sd ) {
 
 }
 
-void get_message (char * filename, char * args, int sd)
+void get_message (char * filename, int sd)
 {
-
-  int c;
-  FILE *file;
-  char message[100];
-  int i =0;
-
-  char str[100];
+  int i, bytesread;
+  char * message;
+  FILE *outputfile;
+ 
+  char str[30];
   strcpy(str, filename);
   strcat(str, ".txt");
+ 
+  if ((outputfile = fopen(str, "r")) == NULL)
+    write(sd,"File does not exist.", 25);
 
-
-  file = fopen(str, "r");
-
-  if (file) {
-    while ((c = getc(file)) != EOF){
-      message[i] = c;
-      i++;
-    }
-    message[i] = 0;
-
-    fclose(file);
-
-    strcpy(args, message);
+  else{
+    fgets(message,sizeof(message),outputfile);
+    write(sd,message,sizeof(message));
   }
-}
 
-void delete_file(char *filename, char *args){
-  int ret;
-  char str[100];
-  strcpy(str, filename);
-  strcat(str, ".txt");
-
-  ret = remove(str);
-
-  if(ret == 0) 
-    strcpy(args,"File deleted successfully");
-  else 
-    strcpy(args,"Error: unable to delete the file");
+  fclose(outputfile);
 }
 
 void list_files(char * args, int sd){
@@ -133,13 +112,13 @@ void list_files(char * args, int sd){
 
 void postmessage (char * sequence, char * filename, int sd)
 {
-   int i, bytesread;
+  int i, bytesread;
   char buffer[255];
 
   strcpy(buffer, sequence);
   FILE *outputfile;
  
-  //  bzero(buffer,255);
+  bzero(buffer,255);
 
   char str[30];
   strcpy(str, filename);
@@ -148,20 +127,19 @@ void postmessage (char * sequence, char * filename, int sd)
   if ((outputfile = fopen(str, "w")) == NULL)
     write(sd, "Error creating file.", 20);
  
-  for (i = 0; i < strlen(sequence); i++)
+  for (i = 0; i < 100; i++)
     {
       if (putc(sequence[i], outputfile) == EOF)
         {
-	  write(sd,"Write error\n",13);
-	  break; // stop the for loop 
+	  printf ("Write error\n");
+	  break; /* stop the for loop */
         }
     }
-  putc(0, outputfile);
+  
 
-  //directory_num++;
+  directory_num++;
      
   fclose(outputfile);
-
 }
 
 
@@ -213,7 +191,44 @@ void play_sound(char * sequence){
   }
 }
 
+void play_original(char * sequence){
 
+  int length = (int)strlen(sequence);
+  int i =0;
+    for (;i<length;i++){
+      if (sequence[i]=='A')
+	system("mpg123 sounds/sound1.mp3");
+      else if (sequence[i]=='a')
+	system("mpg123 sounds/sound1.mp3");
+      else if (sequence[i]=='B')
+	system("mpg123 sounds/sound2.mp3");
+      else if (sequence[i]=='b')
+	system("mpg123 sounds/sound2.mp3");
+      else if (sequence[i]=='C')
+	system("mpg123 sounds/sound3.mp3");
+      else if (sequence[i]=='c')
+	system("mpg123 sounds/sound3.mp3");
+      else if (sequence[i]=='D')
+	system("mpg123 sounds/sound4.mp3");
+      else if (sequence[i]=='d')
+	system("mpg123 sounds/sound4.mp3");
+      else if (sequence[i]=='E')
+	system("mpg123 sounds/sound5.mp3");
+      else if (sequence[i]=='e')
+	system("mpg123 sounds/sound5.mp3");
+      else if (sequence[i]=='F')
+	system("mpg123 sounds/sound6.mp3");
+      else if (sequence[i]=='f')
+	system("mpg123 sounds/sound6.mp3");
+      else if (sequence[i]=='G')
+	system("mpg123 sounds/sound7.mp3");
+      else if (sequence[i]=='g')
+	system("mpg123 sounds/sound7.mp3");
+    }
+}
+
+/****************************************
+ */
 
 
 void process( char * args , int sd) {
@@ -226,7 +241,7 @@ void process( char * args , int sd) {
   if (strcmp(cmd,"play") == 0){
     cmd = strtok(NULL," ");
     //play_sound(cmd);
-    //    play_original(cmd);
+    play_original(cmd);
   }
   
   else if (strcmp(cmd,"save")==0){
@@ -237,16 +252,11 @@ void process( char * args , int sd) {
   
   else if (strcmp(cmd,"get")==0){
     filename = strtok(NULL," ");
-    get_message(filename, args, sd);
+    get_message(filename, sd);
   }
 
   else if (strcmp(cmd,"list")==0){
     list_files(args, sd);
-  }
-
-  else if(strcmp(cmd,"delete")==0){
-    filename = strtok(NULL, " ");
-    delete_file(filename, args);
   }
   
 }
