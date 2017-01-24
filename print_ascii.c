@@ -80,26 +80,25 @@ void print_top( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int i, char keyhit, char 
       }
   }
 
-  else if( i == 2 ) {
-      if((key < 'A') || (key > 'B')) {
-        printf("%s\n", buff[11] );
-        printf( "%s%s%s\n", buff[12], s1, buff[15] );
-      }
-
-      else if( key == 'A' ) {
+  else if( i%3 == 2 ) {
+      if((((key == 'A')) && ( i == 2 )) || ((key == 'D') && ( i == 5 ))) {
            printf("%s\n", buff[4] );
            printf("%s\n", buff[5] );
            printf("%s%s%s\n", buff[6], s1, buff[15] );
         }
-      else if( key == 'B' ) {
+      else if((((key == 'B')) && ( i == 2 )) || ((key == 'E') && ( i == 5 ))) {
         printf("          %s%s\n", s1, buff[7] );
         printf("%s%s %s\n", buff[11], s1, buff[8] );
         printf("%s%s%s\n", buff[12], s1, buff[9] );
       }
+      else {
+        printf("%s\n", buff[11] );
+        printf( "%s%s%s\n", buff[12], s1, buff[15] );
+      }
   }
 
   else {
-    if(((key == 'A') && ( i == 1)) || ((key == 'G') && ( i == 7)))  {
+    if(((key == 'A') && ( i == 1 )) || ((key == 'G') && ( i == 7 )))  {
       printf("%s%s\n", s1, buff[4] );
       printf("%s%s\n", s1, buff[5] );
       printf("%s%s\n", s1, buff[6] );
@@ -139,13 +138,13 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int numkeys, char * key
 
   if( i%3 == 1 ) {
     char * s = "                  ";
-    print_top( buff, 1, keyhit[0], s, "", "" );
+    print_top( buff, i, keyhit[0], s, "", "" );
     printf("%s\n", buff[2] );
     printf("%s     %c\n\n", s, c + diff );
   }
   if( i%3 == 2 ) {
     char * s = "                      ";
-    print_top( buff, 2, keyhit[0], s, "", "" );
+    print_top( buff, i, keyhit[0], s, "", "" );
     printf("%s\n", buff[3] );
     printf("     %c    %s       %c\n\n", c + diff, s, c + diff + 1 );
   }
