@@ -3,11 +3,18 @@
 A C socket application that allows users to play and record drum sequences. 
  
 ## Team Members   
-Sharon Lin - backend, networking
 
-John Park - menu design, aiding with drum animations
+- **Sharon Lin**: backend, networking
+- **John Park**: menu design, aiding with drum animations
+- **Yikai Wang**: project manager, drum animations
 
-Yikai Wang - project manager, drum animations
+## Commands
+
+- **PLAY [sequence (A-G)]**: Will play the sounds in the sequences
+- **SAVE [filename] [sequence]**: Will save the notes in the sequence
+- **GET [filename]**: Will return the value saved in the file
+- **DELETE [filename]**: Will delete the file specified
+- **LIST**: Will list all current files in the program
 
 ## Features
 
