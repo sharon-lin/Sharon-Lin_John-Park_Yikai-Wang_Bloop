@@ -67,8 +67,7 @@ void sub_server( int sd ) {
 
 }
 
-void get_message (char * filename, char * args, int sd)
-{
+void get_message (char * filename, char * args){
 
   int c;
   FILE *file;
@@ -90,7 +89,7 @@ void get_message (char * filename, char * args, int sd)
     message[i] = 0;
 
     fclose(file);
-
+    
     strcpy(args, message);
   }
 }
@@ -109,7 +108,7 @@ void delete_file(char *filename, char *args){
     strcpy(args,"Error: unable to delete the file");
 }
 
-void list_files(char * args, int sd){
+void list_files(char * args){
   char *buffer;
   struct dirent *entry;
   DIR *dir = opendir(".");
@@ -118,24 +117,24 @@ void list_files(char * args, int sd){
   }
   strcpy(args, "\n");
   while ((entry = readdir(dir)) != NULL) {
-    //   printf("%s\n",entry->d_name);
+
     if(strlen(entry->d_name) > 4 && memcmp(entry->d_name + strlen(entry->d_name) - 4, ".txt", 4) == 0){
       strcat(args,entry->d_name);
       strcat(args,"\n ");
     }
-    //write(sd,entry->d_name, 20);
+
   }
   if (strcmp(args,"\n")==0){
     strcpy(args,"There are no files yet.");
   }
+
   //strcat(buffer,0);
-  //write(sd, buffer, sizeof(buffer));
+
   closedir(dir);
 
  }
 
-void postmessage (char * sequence, char * filename, int sd)
-{
+void postmessage (char * sequence, char * filename, char * args){
    int i, bytesread;
   char buffer[255];
 
@@ -149,16 +148,15 @@ void postmessage (char * sequence, char * filename, int sd)
   strcat(str, ".txt");
 
   if ((outputfile = fopen(str, "w")) == NULL)
-    write(sd, "Error creating file.", 20);
+    strcpy(args,"Error creating file.");
 
-  for (i = 0; i < strlen(sequence); i++)
-    {
-      if (putc(sequence[i], outputfile) == EOF)
-        {
-	  write(sd,"Write error\n",13);
-	  break; // stop the for loop
-        }
-    }
+  for (i = 0; i < strlen(sequence); i++){
+      if (putc(sequence[i], outputfile) == EOF){
+	strcpy(args,"Write error\n");
+	break; // stop the for loop
+      }
+  }
+  
   putc(0, outputfile);
 
   //directory_num++;
@@ -177,22 +175,21 @@ void process( char * args , int sd) {
   if (strcmp(cmd,"play") == 0){
     cmd = strtok(NULL," ");
     //play_sound(cmd);
-    //    play_original(cmd);
   }
 
   else if (strcmp(cmd,"save")==0){
     filename = strtok(NULL," ");
     cmd = strtok(NULL," ");
-    postmessage(cmd, filename, sd);
+    postmessage(cmd, filename, args);
   }
 
   else if (strcmp(cmd,"get")==0){
     filename = strtok(NULL," ");
-    get_message(filename, args, sd);
+    get_message(filename, args);
   }
 
   else if (strcmp(cmd,"list")==0){
-    list_files(args, sd);
+    list_files(args);
   }
 
   else if(strcmp(cmd,"delete")==0){
