@@ -15,7 +15,7 @@
 
 void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd ) {
   int ascii_sizes[ASCII_SIZE] = {
-    183, 186, 119, 186,
+    180, 183, 116, 183,
     7, 10, 13,
     8, 9, 14,
     1, 10, 11,
