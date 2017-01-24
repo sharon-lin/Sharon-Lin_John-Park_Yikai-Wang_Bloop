@@ -55,7 +55,7 @@ void play_sound(char * sequence){
   int length = (int)strlen(sequence);
   int i = 0;
 
-  int fd = open("ascii.txt", O_RDONLY);
+  int fd = open("txt/ascii.txt", O_RDONLY);
   char anime[ASCII_SIZE][MAX_ASCII_SIZE];
   read_all( anime, fd );
   close(fd);
@@ -140,22 +140,7 @@ int main( int argc, char *argv[] ) {
   while (1) {
     printf("Next note: ");
     fgets( buffer, sizeof(buffer), stdin );
-    
-    char *p = strchr(buffer, '\n');
-    *p = 0;
 
-    char temp_buff[100];
-    strcpy(temp_buff, buffer);
-    
-    char * cmd;
-    cmd = strtok(temp_buff, " ");
-    lower_string(cmd);
-    if (strcmp(cmd,"play")==0){
-      cmd = strtok(NULL, " ");
-      play_original(cmd);
-      }
-
-    /*
     strtok(buffer, "\n");
     printf( "received: %s\n", buffer );
         
@@ -163,7 +148,7 @@ int main( int argc, char *argv[] ) {
       printf( "%s\n", cmd );
       if (strcmp(cmd,"play")==0){
         play_sound(buffer + 5);
-	}*/
+      }
     
     write( sd, buffer, sizeof(buffer) );
     read( sd, buffer, sizeof(buffer) );
