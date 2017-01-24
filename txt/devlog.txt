@@ -64,3 +64,4 @@ johnP -- 2017-1-24 @01:00
 yikaiW -- 2017-1-24 @2:30
   Added drum animations to client
   Debugged program
+  Added introduction animation to client
