@@ -21,6 +21,6 @@ print_ascii.o: print_ascii.c print_ascii.h
 	$(CC) -c print_ascii.c
 
 clean: 
-	rm *.o *~
+	rm *.o *~ server client
 
 

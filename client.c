@@ -58,7 +58,7 @@ void play_sound(char * sequence){
   int length = (int)strlen(sequence);
   int i = 0;
 
-  int fd = open("ascii.txt", O_RDONLY);
+  int fd = open("txt/ascii.txt", O_RDONLY);
   char anime[ASCII_SIZE][MAX_ASCII_SIZE];
   read_all( anime, fd );
   close(fd);
@@ -163,6 +163,9 @@ int main( int argc, char *argv[] ) {
     }
 
     /*
+=======
+
+>>>>>>> e97f9013db93ba2b4e413f3305211348c2c3d496
     strtok(buffer, "\n");
     printf( "received: %s\n", buffer );
 
@@ -170,8 +173,11 @@ int main( int argc, char *argv[] ) {
       printf( "%s\n", cmd );
       if (strcmp(cmd,"play")==0){
         play_sound(buffer + 5);
+<<<<<<< HEAD
 	}*/
 
+    //      }
+    
     write( sd, buffer, sizeof(buffer) );
     read( sd, buffer, sizeof(buffer) );
     printf( "Output>> %s\n", buffer );
