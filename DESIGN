@@ -7,11 +7,11 @@ Team Members: Sharon Lin, John Park, Yikai Wang
 
 Team Name: Musical Ensemble
 
-Abstract: Our team is developing a GUI in which users will be able to operate and play a virtual drum. This can be useful for teaching beginners on how to operate a drum.
+Abstract: Our team is developing a GUI in which users will be able to operate and play a set of virtual drums. This can be useful for teaching beginners on how to operate a drum.
 
-Description of Use: Users will hit virtual drums, allowing them to play melodies depending on what drums they hit. Different shapes of drums can be chosen. In addition, users will be able to save their melodies as files and upload melodies to be played.
+Description of Use: Users will hit virtual drums, allowing them to play melodies depending on what drums they hit. Different sounds/types of drums can be chosen. In addition, users will be able to save their melodies as files and upload melodies to be played.
 
-Description of Design: We plan on using memory allocation, files (uploading), processes (forking, exec, etc.), signals, pipes (named), shared memory, semaphores, and networking. Yikai will work as the project manager; Sharon will focus on the processes, piping, and backend; and John will work on developing the GUI. We plan on using a linked list to store melodies, as well as a queue to handle the sound from the drum and the concurrent users. We plan on using an arraylist to handle saving the melodies, as well as a concurrent server algorithm to handle multiple users at once.
+Description of Design: We plan on using memory allocation, files (uploading), processes (forking, exec, etc.), signals, and networking. Yikai will work as the project manager; Sharon will focus on the processes and backend; and John will work on developing the GUI. We plan on using structs and lists to handle the storage of clients and songs. We plan on using an arraylist to handle saving the melodies, as well as a concurrent server algorithm to handle multiple users at once.
 
 Timeline: 
 1/6/2017 - Submit the design doc
