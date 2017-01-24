@@ -62,6 +62,19 @@ $ ./client [IP ADDRESS OF SERVER]
 
 #### client.c
 
+- **void play_original(char * sequence);**
+ - Input: sequence of notes
+ - Output: None
+  - Plays the sounds from .mp3 files associated to ABCDEFG in the keys inputted by the user
+- **void play_sound(char * sequence);**
+ - Input: sequence of notes
+ - Output: None
+  - Plays ASCII animations for each of the notes inputted by the user
+- **int main( int argc, char * argv[] )**
+ - Input: arguments
+ - Output: None
+  - Handles all primary client-side functions
+
 #### server.c
 
 - **void subserver(int sd);**
@@ -91,6 +104,10 @@ $ ./client [IP ADDRESS OF SERVER]
 - **void process( char * args , int sd);**
  - Input: buffer, socket descriptor
  - Output: processes commands from client
+- **int main()**
+ - Input: None
+ - Output: None
+  - Handles all primary server-side functions
 
 #### networking.c
 
