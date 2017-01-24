@@ -14,7 +14,36 @@
 #include "networking.h"
 #include "print_ascii.h"
 
-char * menu_options = "******************************\nWELCOME TO THE MUSIC MAKER\n\nOPTIONS:\n\nPLAY [Number of drums (1-7)] [sequence (A-G)] - Will play the sounds in the sequences\nSAVE [filename] [sequence] - Will save the notes in the sequence\nGET [filename] - Will return the value saved in the file\nDELETE [filename] - Will delete the file specified\nLIST - Will list all current files in the program\nCLEAR - Will clear the screen\n******************************\n\n";
+char * menu_options = "\n******************************\nOPTIONS:\n\nPLAY [Number of drums (1-7)] [sequence (A-G)] - Will play the sounds in the sequences\nSAVE [filename] [sequence] - Will save the notes in the sequence\nGET [filename] - Will return the value saved in the file\nDELETE [filename] - Will delete the file specified\nLIST - Will list all current files in the program\nCLEAR - Will clear the screen\n******************************\n";
+
+void play_intro() {
+  FILE * intro;
+  char * lid = NULL;
+  size_t size = 0;
+  ssize_t red;
+  intro = fopen("txt/intro.txt", "r");
+  int counter = 0;
+  while ((red = getline(&lid, &size, intro)) != -1) {
+    printf("%s", lid);
+    counter++;
+    if (counter%20==0){
+      printf("\e[2J\e[H");
+      usleep(40000);
+    }
+  }
+  fclose(intro);
+  sleep(1);
+  printf("Rock Band\n");
+  sleep(1);
+  printf("By John Park, Yikai Wang, and Sharon Lin");
+  sleep(1);
+  printf("\nWhat is your name? ");
+  char input[60];
+  fgets(input, sizeof(input), stdin);
+  input[strlen(input)-1] = 0;
+  printf("\rHello %s!\n\n\n", input);
+  sleep(1);
+}
 
 
 void play_original(char * sequence){
@@ -136,11 +165,14 @@ int main( int argc, char *argv[] ) {
   
 
   system("clear");
-  printf("%s",menu_options);
+  
+  play_intro();
 
   char buffer[MESSAGE_BUFFER_SIZE];
 
   while (1) {
+    usleep(600000);
+    printf("%s",menu_options);
     printf("Input>> ");
     fgets( buffer, sizeof(buffer), stdin );
 
@@ -159,7 +191,6 @@ int main( int argc, char *argv[] ) {
     }
     else if(strcmp(cmd,"clear")==0){
       system("clear");
-      printf("%s",menu_options);
     }
 
     write( sd, buffer, sizeof(buffer) );
