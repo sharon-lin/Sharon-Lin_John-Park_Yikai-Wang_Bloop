@@ -10,7 +10,7 @@ A C socket application that allows users to play and record drum sequences.
 
 ## Commands
 
-- **PLAY [sequence (A-G)]**: Will play the sounds in the sequences
+- **PLAY [Number of drums (1-7)] [sequence (A-G)]**: Will play the sounds in the sequences
 - **SAVE [filename] [sequence]**: Will save the notes in the sequence
 - **GET [filename]**: Will return the value saved in the file
 - **DELETE [filename]**: Will delete the file specified
