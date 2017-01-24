@@ -155,7 +155,7 @@ int main( int argc, char *argv[] ) {
     lower_string(cmd);
     if (strcmp(cmd,"play")==0){
       cmd = strtok(NULL, " ");
-      play_sond(cmd);
+      play_sound(cmd);
     }
     else if(strcmp(cmd,"clear")==0){
       system("clear");
