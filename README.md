@@ -111,13 +111,53 @@ $ ./client [IP ADDRESS OF SERVER]
 
 #### networking.c
 
+- **void error_check( int i, char * s );**
+ - Input: error number, error string
+ - Output: None
+  - Displays the specific error encountered within the program
+- **int server_setup();**
+ - Input: None
+ - Output: socket descriptor
+  - Sets up and binds the specified socket
+- **int server_connect(int sd);**
+ - Input: socket descriptor
+ - Output: connection descriptor
+  - Connects the server to the specified socket
+- **int client_connect( char * host );**
+ - Input: host descriptor
+ - Output: socket descriptor
+  - Connects the client to the specified host
+- **void lower_string(char s[]);**
+ - Input: string
+ - Output: None
+  - Turns the specified string into all lowercase letters
+
 #### print_ascii.c
+
+- **void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd );**
+ - Input: None
+ - Output: None
+- **void print_top( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int i, char keyhit, char * s1, char * s2, char * s3 );**
+ - Input: None
+ - Output: None
+- **void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int numkeys, char * keyhit );**
+ - Input: None
+ - Output: None
+
+#### menu.c
+
+- **char /*/* splitnsep(char * input, char * sym);**
+ - Input: None
+ - Output: None
+- **char * fireblanks(char * input);**
+ - Input: None
+ - Output: None
+- **int main();**
+ - Input: None
+ - Output: None
 
 ## Folders
 
 #### txt
 
 #### sounds
-
-## Bugs
-- The buffer overflows when the query string is too long
