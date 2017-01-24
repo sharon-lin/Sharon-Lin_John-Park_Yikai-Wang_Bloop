@@ -98,7 +98,7 @@ void print_top( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int i, char keyhit, char 
   }
 
   else {
-    if(((key == 'A') && ( i == 1 )) || ((key == 'G') && ( i == 7 )))  {
+    if(((key == 'A') && ( i == 1 )) || ((key == 'G') && ( i == 7 )) || ((key == 'D') && ( i == 4 )))  {
       printf("%s%s\n", s1, buff[4] );
       printf("%s%s\n", s1, buff[5] );
       printf("%s%s\n", s1, buff[6] );
