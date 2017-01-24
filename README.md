@@ -25,10 +25,10 @@ Yikai Wang - project manager, drum animations
 ## Bugs
 
 - Issues with buffer/memory
-- - Occasionally, the play [SEQUENCE] function will result in a SEG FAULT
-- - This will terminate the program
-- - Similar occurance with file I/O depending on sizes of files
-- - - Primarily due to limit sizes of files set during development
+ - Occasionally, the play [SEQUENCE] function will result in a SEG FAULT
+ - This will terminate the program
+  - Similar occurance with file I/O depending on sizes of files
+   - Primarily due to limit sizes of files set during development
 
 ## Running the program
 
