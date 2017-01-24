@@ -37,7 +37,8 @@ A C socket application that allows users to play and record drum sequences.
 
 - Issues with buffer/memory
  - Occasionally, the play [SEQUENCE] function will result in a SEG FAULT
- - This will terminate the program if it occurs
+ - This will typically cause issues with the "What's your name?" query as well
+ - This will also terminate the program if it occurs
   - Similar occurance with file I/O depending on sizes of files
    - Primarily due to limit sizes of files set during development
 
