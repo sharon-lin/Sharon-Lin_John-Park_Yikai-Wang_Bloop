@@ -114,7 +114,7 @@ void play_sound(char * sequence){
     else if ((c=='g') && (numdrums > 6)) {
       usleep(300000);
       printf("\e[2J\e[H");
-      print_drums( anime, numdrums, "a" );
+      print_drums( anime, numdrums, "g" );
       system("mpg123 sounds/sound7.mp3 &> log");
     }
   }
@@ -154,8 +154,8 @@ int main( int argc, char *argv[] ) {
     cmd = strtok(temp_buff, " ");
     lower_string(cmd);
     if (strcmp(cmd,"play")==0){
-      cmd = strtok(NULL, " ");
-      play_sound(cmd);
+      strtok( buffer, "\n" );
+      play_sound(buffer);
     }
     else if(strcmp(cmd,"clear")==0){
       system("clear");
