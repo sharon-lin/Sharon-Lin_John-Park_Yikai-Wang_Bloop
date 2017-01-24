@@ -79,43 +79,43 @@ void play_sound(char * sequence){
       usleep(300000);
       printf("\e[2J\e[H");
       print_drums( anime, numdrums, "a" );
-      system("mpg123 sounds/sound1.mp3");
+      system("mpg123 sounds/sound1.mp3 &> log");
     }
     else if ((c=='b') && (numdrums > 1)) {
       usleep(300000);
       printf("\e[2J\e[H");
       print_drums( anime, numdrums, "b" );
-      system("mpg123 sounds/sound2.mp3");
+      system("mpg123 sounds/sound2.mp3 &> log");
     }
     else if ((c=='c') && (numdrums > 2)) {
       usleep(300000);
       printf("\e[2J\e[H");
       print_drums( anime, numdrums, "c" );
-      system("mpg123 sounds/sound3.mp3");
+      system("mpg123 sounds/sound3.mp3 &> log");
     }
     else if ((c=='d') && (numdrums > 3)) {
       usleep(300000);
       printf("\e[2J\e[H");
       print_drums( anime, numdrums, "d" );
-      system("mpg123 sounds/sound3.mp3");
+      system("mpg123 sounds/sound4.mp3 &> log");
     }
     else if ((c=='e') && (numdrums > 4)) {
       usleep(300000);
       printf("\e[2J\e[H");
       print_drums( anime, numdrums, "e" );
-      system("mpg123 sounds/sound5.mp3");
+      system("mpg123 sounds/sound5.mp3 &> log");
     }
     else if ((c=='f') && (numdrums > 5)) {
       usleep(300000);
       printf("\e[2J\e[H");
       print_drums( anime, numdrums, "f" );
-      system("mpg123 sounds/sound6.mp3");
+      system("mpg123 sounds/sound6.mp3 &> log");
     }
     else if ((c=='g') && (numdrums > 6)) {
       usleep(300000);
       printf("\e[2J\e[H");
-      print_drums( anime, numdrums, "g" );
-      system("mpg123 sounds/sound7.mp3");
+      print_drums( anime, numdrums, "a" );
+      system("mpg123 sounds/sound7.mp3 &> log");
     }
   }
 }
@@ -155,29 +155,13 @@ int main( int argc, char *argv[] ) {
     lower_string(cmd);
     if (strcmp(cmd,"play")==0){
       cmd = strtok(NULL, " ");
-      play_original(cmd);
+      play_song(cmd);
     }
     else if(strcmp(cmd,"clear")==0){
       system("clear");
       printf("%s",menu_options);
     }
 
-    /*
-=======
-
->>>>>>> e97f9013db93ba2b4e413f3305211348c2c3d496
-    strtok(buffer, "\n");
-    printf( "received: %s\n", buffer );
-
-      char cmd[5] = { buffer[0], buffer[1], buffer[2], buffer[3], 0 };
-      printf( "%s\n", cmd );
-      if (strcmp(cmd,"play")==0){
-        play_sound(buffer + 5);
-<<<<<<< HEAD
-	}*/
-
-    //      }
-    
     write( sd, buffer, sizeof(buffer) );
     read( sd, buffer, sizeof(buffer) );
     printf( "Output>> %s\n", buffer );
