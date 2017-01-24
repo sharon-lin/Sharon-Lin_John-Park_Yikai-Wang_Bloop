@@ -14,9 +14,6 @@
 #include "networking.h"
 #include "print_ascii.h"
 
-char * menu_options = "******************************\nWELCOME TO THE MUSIC MAKER\n\nOPTIONS:\n\nPLAY [sequence (A-G)] - Will play the sounds in the sequences\nSAVE [filename] [sequence] - Will save the notes in the sequence\nGET [filename] - Will return the value saved in the file\nDELETE [filename] - Will delete the file specified\nLIST - Will list all current files in the program\n******************************\n\n";
-
-
 void play_original(char * sequence){
 
   int length = (int)strlen(sequence);
@@ -133,15 +130,15 @@ int main( int argc, char *argv[] ) {
   int sd;
 
   sd = client_connect( host );
-  
 
-  system("clear");
+  char * menu_options = "******************************\nWELCOME TO THE MUSIC MAKER\n\nOPTIONS:\n\nPLAY [sequence (A-G)] - Will play the sounds in the sequences\nSAVE [filename] [sequence] - Will save the notes in the sequence\nGET [filename] - Will return the value saved in the file\nDELETE [filename] - Will delete the file specified\nLIST - Will list all current files in the program\n******************************\n\n";
+
   printf("%s",menu_options);
 
   char buffer[MESSAGE_BUFFER_SIZE];
 
   while (1) {
-    printf("Input>> ");
+    printf("Next note: ");
     fgets( buffer, sizeof(buffer), stdin );
 
     char *p = strchr(buffer, '\n');
@@ -156,11 +153,7 @@ int main( int argc, char *argv[] ) {
     if (strcmp(cmd,"play")==0){
       cmd = strtok(NULL, " ");
       play_original(cmd);
-    }
-    else if(strcmp(cmd,"clear")==0){
-      system("clear");
-      printf("%s",menu_options);
-    }
+      }
 
     /*
     strtok(buffer, "\n");
@@ -174,7 +167,7 @@ int main( int argc, char *argv[] ) {
 
     write( sd, buffer, sizeof(buffer) );
     read( sd, buffer, sizeof(buffer) );
-    printf( "Output>> %s\n", buffer );
+    printf( "received: %s\n", buffer );
     //send_message_all(buffer);
 
   }
