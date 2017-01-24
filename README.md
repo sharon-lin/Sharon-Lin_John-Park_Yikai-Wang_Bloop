@@ -16,14 +16,15 @@ A C socket application that allows users to play and record drum sequences.
 - **SAVE [filename] [sequence]**: Will save the notes in the sequence
 - **GET [filename]**: Will return the value saved in the file
 - **DELETE [filename]**: Will delete the file specified
-- **LIST**: Will list all current files in the program
+- **LIST**: Will list all current files in the program 
 
 ## Features
 
+- Plays interactive animation at onset 
 - Allows users to play sequences of drum sounds [A,B,C,D,E,F,G]
 - Allows users to save sequences of drum sounds as .txt files
 - Users can access other users' sequences and delete and modify files
-- Accompanied by drum animations
+- Accompanied by drum animations for each note played
 - Dumps unnecessary text from client-side into log file
 
 ## Attempted
@@ -36,7 +37,7 @@ A C socket application that allows users to play and record drum sequences.
 
 - Issues with buffer/memory
  - Occasionally, the play [SEQUENCE] function will result in a SEG FAULT
- - This will terminate the program
+ - This will terminate the program if it occurs
   - Similar occurance with file I/O depending on sizes of files
    - Primarily due to limit sizes of files set during development
 
