@@ -22,6 +22,7 @@ A C socket application that allows users to play and record drum sequences.
 - Allows users to save sequences of drum sounds as .txt files
 - Users can access other users' sequences and delete and modify files
 - Accompanied by drum animations
+- Dumps unnecessary text from client-side into log file
 
 ## Attempted
 
