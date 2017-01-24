@@ -1,7 +1,14 @@
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
 #include <string.h>
+#include <pthread.h>
+#include <sys/types.h>
+#include <ctype.h>
 #include <fcntl.h>
 #include "readline/readline.h"
 #include "readline/history.h"
@@ -10,27 +17,22 @@ char **splitnsep(char *input, char *sym);
 char *fireblanks(char *input);
 
 int main() {
-  // FILE * intro;
-  // char * lid = NULL;
-  // size_t size = 0;
-  // ssize_t red;
-  // intro = fopen("intro.txt", "r");
-  // int counter = 0;
-  // while ((red = getline(&lid, &size, intro)) != -1) {
-  //   printf("%s", lid);
-  //   counter++;
-  //   if (counter == 11){
-  //     const char *code = lid;
-  //     TCCState *tcc = tcc_new();
-  //     int argc = 1;
-  //     char *argv[] = { "test" };
-  //     int result = tcc_run (tcc, argc, argv);
-  //     tcc_delete(tcc);
-  //   }
-  // }
-  // fclose(intro);
-  printf("R O C K    B A N D\n");
-  printf("What is your name?: ");
+  FILE * intro;
+  char * lid = NULL;
+  size_t size = 0;
+  ssize_t red;
+  intro = fopen("intro.txt", "r");
+  int counter = 0;
+  while ((red = getline(&lid, &size, intro)) != -1) {
+    printf("%s", lid);
+    counter++;
+    if (counter%20==0){
+      printf("\e[2J\e[H");
+      usleep(40000);
+    }
+  }
+  fclose(intro);
+  printf("\nWhat is your name?: ");
   char input[60];
   fgets(input, sizeof(input), stdin);
   input[strlen(input)-1] = 0;
@@ -49,7 +51,7 @@ int main() {
     printf("\rHello %s!\n\n\n", name);
   }
   sleep(1);
-  printf("How many drums do you want to play with? (max 6):\n");
+  printf("How many drums do you want to play with? (max 7):\n");
   printf("Respond in letter fromat:\n");
   printf("with 1 drum set as A\n");
   printf("with 2 drum sets as B\n");
@@ -72,21 +74,6 @@ int main() {
     ac2 = splitnsep(ac1, " ");
     char *acdstr;
     if( !strcmp(ac2[0], "A") ) {
-      forever = 1;
-    }
-    else if( !strcmp(ac2[0], "B") ) {
-      forever = 1;
-    }
-    else if( !strcmp(ac2[0], "C") ) {
-      forever = 1;
-    }
-    else if( !strcmp(ac2[0], "D") ) {
-      forever = 1;
-    }
-    else  if( !strcmp(ac2[0], "E") ) {
-      forever = 1;
-    }
-    else  if( !strcmp(ac2[0], "F") ) {
       forever = 1;
     }
     else {
