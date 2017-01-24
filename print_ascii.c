@@ -99,7 +99,7 @@ void print_top( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int i, char keyhit, char 
   }
 
   else {
-    if(key != 'A') {
+    if((key != 'A') && (key != 'G')) {
       printf("%s%s\n", s1, buff[11] );
       printf("%s%s\n", s1, buff[12] );
     }
@@ -151,4 +151,3 @@ void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int numkeys, char * key
     printf("     %c    %s       %c\n\n", c + diff, s, c + diff + 1 );
   }
 }
-
