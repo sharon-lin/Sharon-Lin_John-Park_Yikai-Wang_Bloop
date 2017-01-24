@@ -14,7 +14,7 @@
 #include "networking.h"
 #include "print_ascii.h"
 
-char * menu_options = "******************************\nWELCOME TO THE MUSIC MAKER\n\nOPTIONS:\n\nPLAY [sequence (A-G)] - Will play the sounds in the sequences\nSAVE [filename] [sequence] - Will save the notes in the sequence\nGET [filename] - Will return the value saved in the file\nDELETE [filename] - Will delete the file specified\nLIST - Will list all current files in the program\nCLEAR - Will clear the screen\n******************************\n\n";
+char * menu_options = "******************************\nWELCOME TO THE MUSIC MAKER\n\nOPTIONS:\n\nPLAY [Number of drums (1-7)] [sequence (A-G)] - Will play the sounds in the sequences\nSAVE [filename] [sequence] - Will save the notes in the sequence\nGET [filename] - Will return the value saved in the file\nDELETE [filename] - Will delete the file specified\nLIST - Will list all current files in the program\nCLEAR - Will clear the screen\n******************************\n\n";
 
 
 void play_original(char * sequence){
