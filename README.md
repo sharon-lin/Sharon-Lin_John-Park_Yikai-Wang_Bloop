@@ -184,7 +184,7 @@ $ ./client [IP ADDRESS OF SERVER]
 - **intro.txt**
  - Introductory screen to the animated menu
 - **keys.txt**
- - Introductory screen to the animated keys
+ - Introductory screen to the animated keys 
 
 #### sounds
  
