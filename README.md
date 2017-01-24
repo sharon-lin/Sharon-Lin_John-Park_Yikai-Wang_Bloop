@@ -142,29 +142,46 @@ $ ./client [IP ADDRESS OF SERVER]
 #### print_ascii.c
 
 - **void read_all( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int fd );**
- - Input: None
+ - Input: buffer, file descriptor
  - Output: None
+  - Reads in the specified ASCII sizes
 - **void print_top( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int i, char keyhit, char * s1, char * s2, char * s3 );**
- - Input: None
+ - Input: buffer, size constant, notes played, drums specified
  - Output: None
+  - Prints out the tops of the drums hit for the animation
 - **void print_drums( char buff[ASCII_SIZE][MAX_ASCII_SIZE], int numkeys, char * keyhit );**
- - Input: None
+ - Input: buffer, size constant, notes played
  - Output: None
+  - Prints out the bottom portion of the drums specified
 
 #### menu.c
 
 - **char /*/* splitnsep(char * input, char * sym);**
- - Input: None
- - Output: None
+ - Input: string, delimeters
+ - Output: separated string
+  - Separates string by delimeters
 - **char * fireblanks(char * input);**
- - Input: None
- - Output: None
+ - Input: string
+ - Output: modified string
+  - Removes blanks from a string
 - **int main();**
  - Input: None
- - Output: None
+ - Output: end of program
+  - Handles communication with client and displays menu
 
 ## Folders
 
 #### txt
 
+- **ascii.txt**
+ - ASCII frames used for the drum animations
+- **devlog.txt**
+ - Official devlog for the project
+- **intro.txt**
+ - Introductory screen to the animated menu
+- **keys.txt**
+ - Introductory screen to the animated keys
+
 #### sounds
+ 
+- Contains sound files sound1.mp3 through sound7.mp3 used for the project
